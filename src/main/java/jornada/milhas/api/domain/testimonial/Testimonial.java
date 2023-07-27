@@ -16,6 +16,7 @@ public class Testimonial {
     private String name;
     private String testimonial;
     private String photoPath;
+    private boolean active;
 
 
 
