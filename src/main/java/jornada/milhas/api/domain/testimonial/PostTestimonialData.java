@@ -1,6 +1,6 @@
 package jornada.milhas.api.domain.testimonial;
 
-public record PostTestimonial(
+public record PostTestimonialData(
 
          String name,
          String testimonial,

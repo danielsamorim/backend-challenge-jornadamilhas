@@ -18,6 +18,10 @@ public class Testimonial {
     private String photoPath;
     private boolean active;
 
-
-
+    public Testimonial(PostTestimonialData data) {
+        this.name = data.name();
+        this.testimonial = data.testimonial();
+        this.photoPath = data.photoPath();
+        this.active = true;
+    }
 }
