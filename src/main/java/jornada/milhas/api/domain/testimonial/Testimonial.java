@@ -14,14 +14,15 @@ public class Testimonial {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String testimonial;
-    private String photoPath;
+    private String text;
+    private String photo;
+
     private boolean active;
 
     public Testimonial(PostTestimonialData data) {
         this.name = data.name();
-        this.testimonial = data.testimonial();
-        this.photoPath = data.photoPath();
+        this.text = data.text();
+        this.photo = data.photo();
         this.active = true;
     }
 }

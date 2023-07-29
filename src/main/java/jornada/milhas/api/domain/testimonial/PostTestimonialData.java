@@ -1,9 +1,14 @@
 package jornada.milhas.api.domain.testimonial;
 
+import jakarta.validation.constraints.NotNull;
+
 public record PostTestimonialData(
 
-         String name,
-         String testimonial,
-         String photoPath
+        @NotNull
+        String name,
+        @NotNull
+        String text,
+        @NotNull
+        String photo
 ) {
 }
