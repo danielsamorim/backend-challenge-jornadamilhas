@@ -74,12 +74,11 @@ public class TestimonialController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity deleteTestimonial(@PathVariable Long id){
         var testimonial = repository.getReferenceById(id);
         testimonial.delete();
         return ResponseEntity.noContent().build();
     }
-
-
 
 }
