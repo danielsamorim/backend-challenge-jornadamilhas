@@ -37,4 +37,8 @@ public class Testimonial {
             this.photo = data.photo();
         }
     }
+
+    public void delete() {
+        this.active = false;
+    }
 }

@@ -41,7 +41,8 @@ public class TestimonialController {
     @GetMapping
     public Page<GetTestimonialData> getTestimonial(@PageableDefault(size = 5, sort = {"id"}) Pageable pages){
 
-        return repository.findAllByActiveTrue(pages).map(GetTestimonialData::new);
+        var testimonial = repository.findAllByActiveTrue(pages).map(GetTestimonialData::new);
+        return ResponseEntity.ok(testimonial).getBody();
 
     }
 
@@ -70,6 +71,13 @@ public class TestimonialController {
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
 
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteTestimonial(@PathVariable Long id){
+        var testimonial = repository.getReferenceById(id);
+        testimonial.delete();
+        return ResponseEntity.noContent().build();
     }
 
 
