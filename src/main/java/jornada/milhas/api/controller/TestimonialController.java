@@ -1,10 +1,7 @@
 package jornada.milhas.api.controller;
 
 import jakarta.validation.Valid;
-import jornada.milhas.api.domain.testimonial.GetTestimonialData;
-import jornada.milhas.api.domain.testimonial.PostTestimonialData;
-import jornada.milhas.api.domain.testimonial.Testimonial;
-import jornada.milhas.api.domain.testimonial.TestimonialRepository;
+import jornada.milhas.api.domain.testimonial.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -64,6 +61,16 @@ public class TestimonialController {
     }
 
 
+    @PutMapping
+    @Transactional
+    public ResponseEntity updateTestimonial(@RequestBody @Valid updateTestimonialData data){
+
+        var testimonial = repository.getReferenceById(data.id());
+        testimonial.updateInformation(data);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+
+    }
 
 
 

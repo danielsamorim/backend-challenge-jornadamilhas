@@ -26,4 +26,15 @@ public class Testimonial {
     }
 
 
+    public void updateInformation(updateTestimonialData data) {
+        if (data.name() != null){
+            this.name = data.name();
+        }
+        if (data.text() != null){
+            this.text = data.text();
+        }
+        if (data.photo() != null){
+            this.photo = data.photo();
+        }
+    }
 }
