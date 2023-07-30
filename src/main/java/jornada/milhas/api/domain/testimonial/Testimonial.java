@@ -16,8 +16,7 @@ public class Testimonial {
     private String name;
     private String text;
     private String photo;
-
-    private boolean active;
+    private Boolean active;
 
     public Testimonial(PostTestimonialData data) {
         this.name = data.name();
@@ -25,4 +24,6 @@ public class Testimonial {
         this.photo = data.photo();
         this.active = true;
     }
+
+
 }
