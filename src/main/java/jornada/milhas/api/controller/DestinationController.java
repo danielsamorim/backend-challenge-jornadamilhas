@@ -15,8 +15,6 @@ public class DestinationController {
     @PostMapping
     public ResponseEntity addDestination(@RequestBody @Valid PostDestination data){
 
-
-
     }
 
 
