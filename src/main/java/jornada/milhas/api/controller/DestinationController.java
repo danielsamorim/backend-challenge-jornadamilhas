@@ -57,9 +57,11 @@ public class DestinationController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-
-
-
-
-
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity deleteDestination(@PathVariable Long id){
+        var destination = repository.getReferenceById(id);
+        destination.delete();
+        return ResponseEntity.noContent().build();
+    }
 }
