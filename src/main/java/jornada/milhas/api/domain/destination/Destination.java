@@ -42,7 +42,7 @@ public class Destination {
         }
     }
 
-    public void deleteDestination(){
+    public void delete(){
         this.active = false;
     }
 }
