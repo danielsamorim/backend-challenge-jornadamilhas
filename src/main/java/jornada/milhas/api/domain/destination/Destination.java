@@ -22,13 +22,13 @@ public class Destination {
     private Double price;
     private Boolean active;
 
-    public Destination(Long id, String photo, String name, Double price) {
-        this.id = id;
-        this.photo = photo;
-        this.name = name;
-        this.price = price;
+    public Destination(PostDestination data) {
+        this.photo = data.photo();
+        this.name = data.name();
+        this.price = data.price();
         this.active = true;
     }
+
 
     public void updateInformation(updateDestinationData data){
         if (data.photo() != null){

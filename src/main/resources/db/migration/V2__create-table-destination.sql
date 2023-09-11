@@ -1,0 +1,8 @@
+CREATE TABLE destination (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    photo VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    price DOUBLE NOT NULL,
+    active BOOLEAN NOT NULL
+);
+
