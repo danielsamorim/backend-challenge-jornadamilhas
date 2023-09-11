@@ -49,6 +49,16 @@ public class DestinationController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping
+    @Transactional
+    public ResponseEntity updateDestination(@RequestBody @Valid updateDestinationData data){
+        var destination = repository.getReferenceById(data.id());
+        destination.updateInformation(data);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+
+
 
 
 
