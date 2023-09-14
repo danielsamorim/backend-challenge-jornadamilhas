@@ -2,7 +2,6 @@ package jornada.milhas.api.controller;
 
 import jakarta.validation.Valid;
 import jornada.milhas.api.domain.destination.*;
-import jornada.milhas.api.domain.testimonial.updateTestimonialData;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -11,8 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
-@RequestMapping("/destination")
+@RequestMapping("/destinations")
 public class DestinationController {
 
     private final DestinationRepository repository;
@@ -33,18 +35,33 @@ public class DestinationController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping
+    @GetMapping({"/"})
     public Page<GetDestinationData> getDestination(@PageableDefault(size = 5, sort = {"id"}) Pageable pages){
         var destination = repository.findAllByActiveTrue(pages).map(GetDestinationData::new);
         return ResponseEntity.ok(destination).getBody();
     }
 
+    @GetMapping
+    public ResponseEntity getDestinationByName(@RequestParam String name){
+        List<Destination> destinations = repository.findAllByName(name);
+
+        // fazer a validação separado depois
+        if (destinations.size() != 0){
+            List<GetDestinationData> destinationByName = new ArrayList<>();
+            for (Destination destination: destinations) {
+                destinationByName.add(new GetDestinationData(destination));
+            }
+            return ResponseEntity.ok(destinationByName);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Destino não encontrado");
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity getDestinationById(@PathVariable Long id){
-        var destinantion = repository.getReferenceById(id);
+        var destination = repository.getReferenceById(id);
 
-        if (destinantionActive(destinantion.getId())){
-            return ResponseEntity.ok(new GetDestinationData(destinantion));
+        if (destinantionActive(destination.getId())){
+            return ResponseEntity.ok(new GetDestinationData(destination));
         }
         return ResponseEntity.noContent().build();
     }
