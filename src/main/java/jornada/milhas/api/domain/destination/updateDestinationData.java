@@ -6,7 +6,7 @@ public record updateDestinationData(
 
         @NotNull
         Long id,
-        String photo,
+        String firstPhoto,
         String name,
         Double price) {
 }

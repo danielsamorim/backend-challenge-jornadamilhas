@@ -17,13 +17,14 @@ public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String photo;
+    @Column(name = "first_photo")
+    private String firstPhoto;
     private String name;
     private Double price;
     private Boolean active;
 
     public Destination(PostDestination data) {
-        this.photo = data.photo();
+        this.firstPhoto = data.firstPhoto();
         this.name = data.name();
         this.price = data.price();
         this.active = true;
@@ -31,8 +32,8 @@ public class Destination {
 
 
     public void updateInformation(updateDestinationData data){
-        if (data.photo() != null){
-            this.photo = data.photo();
+        if (data.firstPhoto() != null){
+            this.firstPhoto = data.firstPhoto();
         }
         if (data.name() != null){
             this.name = data.name();
