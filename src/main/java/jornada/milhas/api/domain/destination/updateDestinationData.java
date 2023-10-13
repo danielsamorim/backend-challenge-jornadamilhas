@@ -7,6 +7,10 @@ public record updateDestinationData(
         @NotNull
         Long id,
         String firstPhoto,
+        String secondPhoto,
+        String meta,
         String name,
-        Double price) {
+        Double price,
+        String description
+        ) {
 }

@@ -4,12 +4,15 @@ public record GetDestinationData(
 
         Long id,
         String firstPhoto,
+        String secondPhoto,
+        String meta,
         String name,
-        Double price
+        Double price,
+        String description
 ) {
 
 
     public GetDestinationData(Destination data) {
-        this(data.getId(), data.getFirstPhoto(), data.getName(), data.getPrice());
+        this(data.getId(), data.getFirstPhoto(), data.getSecondPhoto(), data.getMeta(), data.getName(), data.getPrice(), data.getDescription());
     }
 }
